@@ -1,4 +1,3 @@
-import XCTest
 import Foundation
 import Network
 @testable import Kairo
@@ -15,7 +14,7 @@ import Network
  * - Async stream functionality
  * - Error handling and edge cases
  */
-class HealthMonitorTests: XCTestCase {
+class HealthMonitorTests {
     
     // MARK: - Properties
     
@@ -27,17 +26,15 @@ class HealthMonitorTests: XCTestCase {
     
     // MARK: - Setup and Teardown
     
-    override func setUp() async throws {
-        try await super.setUp()
+    func setUp() async throws {
         mockLogger = MockLogger()
         healthMonitor = HealthMonitor()
     }
     
-    override func tearDown() async throws {
+    func tearDown() async throws {
         await healthMonitor.stop()
         healthMonitor = nil
         mockLogger = nil
-        try await super.tearDown()
     }
     
     // MARK: - Health Snapshot Tests
